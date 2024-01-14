@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  ww-api:
+    build:
+      context: .
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8071:8000"
+    env_file: .env.compose
+    restart: on-failure
+
+#  cache:
+#    image: "redis:7.2.4"
+#    command: redis-server
+#    ports:
+#      - "16379:6379"
+#    volumes:
+#      - redis-data:/data
+
+#
+#volumes:
+#  redis-data:
