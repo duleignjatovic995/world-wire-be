@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "world-wire-be"
+version = "0.1.0"
+description = ""
+authors = ["dignjatovic <dusan.ignjatovic995@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.109.0"
+pydantic-settings = "^2.1.0"
+uvicorn = "^0.25.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
