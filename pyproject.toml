@@ -10,6 +10,14 @@ python = "^3.11"
 fastapi = "^0.109.0"
 pydantic-settings = "^2.1.0"
 uvicorn = "^0.25.0"
+celery = "^5.3.6"
+polars = "^0.20.6"
+requests = "^2.31.0"
+humps = "^0.2.2"
+sqlalchemy = "1.4"
+alembic = "^1.13.1"
+redis = "^5.0.1"
+psycopg2-binary = "^2.9.9"
 
 
 [build-system]
