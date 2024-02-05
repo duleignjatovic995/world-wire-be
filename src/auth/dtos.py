@@ -2,7 +2,7 @@ import uuid
 from typing import Optional
 
 from pydantic import Field, field_validator
-from pydantic_core.core_schema import FieldValidationInfo
+from pydantic_core.core_schema import ValidationInfo
 
 from src.common.dto_config import BaseModel
 
@@ -24,7 +24,7 @@ class SignupDto(BaseModel):
     password2: str
 
     @field_validator("password2")
-    def passwords_match(cls, v: str, info: FieldValidationInfo) -> str:
+    def passwords_match(cls, v: str, info: ValidationInfo) -> str:
         if "password1" in info.data and v != info.data["password1"]:
             raise ValueError("passwords do not match")
         return v
