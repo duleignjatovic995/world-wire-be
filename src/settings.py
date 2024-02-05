@@ -16,6 +16,10 @@ class Settings(BaseSettings):
 
     ENV: Environment = Environment.DEVELOPMENT
 
+    SECRET_KEY: str
+    JWT_SIGN_ALGORITHM: str = "HS256"
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 60
+
     COUNTRY_API_URL: str = "https://restcountries.com/v3.1/all"
 
     DB_HOST: str
