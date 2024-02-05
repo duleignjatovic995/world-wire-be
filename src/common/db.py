@@ -1,6 +1,6 @@
 from sqlalchemy import MetaData, create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker
 
 from src.settings import settings
 
@@ -21,11 +21,3 @@ meta = MetaData(
 )
 
 Base = declarative_base(metadata=meta)
-
-
-def get_db() -> Session:
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
