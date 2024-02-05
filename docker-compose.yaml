@@ -10,14 +10,44 @@ services:
     env_file: .env.compose
     restart: on-failure
 
-#  cache:
-#    image: "redis:7.2.4"
-#    command: redis-server
-#    ports:
-#      - "16379:6379"
-#    volumes:
-#      - redis-data:/data
 
-#
-#volumes:
-#  redis-data:
+  redis:
+    image: "redis:7.2.4"
+    command: redis-server
+    ports:
+      - "16379:6379"
+    volumes:
+      - redis-data:/data
+
+  flower:
+    image: mher/flower
+    env_file:
+      - ${ROOT_ENV_PATH:-./}.env.compose
+    ports:
+      - "45555:5555"
+    depends_on:
+      - redis
+
+  ww-worker:
+    build:
+      context: .
+    command: celery --app=src.celery_config:app worker --concurrency=10 --loglevel=INFO
+    env_file: .env.compose
+    depends_on:
+      - redis
+
+  database:
+    image: postgres:16
+    restart: always
+    ports:
+      - "15432:5432"
+    volumes:
+      - database-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: sKsQ74X5t5jXgJwgTrUpsFhTRPCzbWNe
+      POSTGRES_USER: admin
+      POSTGRES_DB: countries
+
+volumes:
+  redis-data:
+  database-data:
