@@ -18,6 +18,8 @@ sqlalchemy = "1.4"
 alembic = "^1.13.1"
 redis = "^5.0.1"
 psycopg2-binary = "^2.9.9"
+pandas = "^2.2.0"
+pyarrow = "^15.0.0"
 
 
 [build-system]

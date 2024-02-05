@@ -7,7 +7,7 @@ class RawCountryDTO(TypedDict):
     alpha3_code: str
     region: str
     subregion: str
-    map: str
+    maps: str
     flag: str
     is_landlocked: bool
     area: float

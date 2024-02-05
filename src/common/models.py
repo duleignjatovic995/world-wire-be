@@ -11,14 +11,14 @@ from src.common.db import Base
 class Country(Base):
     __tablename__ = "countries"
 
-    id = Column(UUID(as_uuid=True), primary_key=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String(100), nullable=False, index=True)
     alpha2_code = Column(String(2), nullable=False)
     alpha3_code = Column(String(3), nullable=False)
     region = Column(String(100), nullable=False)
     subregion = Column(String(100), nullable=False)
     maps = Column(String(100), nullable=False)
-    flag = Column(String(100), nullable=False)
+    flag = Column(String(150), nullable=False)
     is_landlocked = Column(Boolean, default=False)
     area = Column(Numeric, nullable=False)
     population = Column(Numeric, nullable=False)

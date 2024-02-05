@@ -1,10 +1,13 @@
 """
 This module stores loading part of country ingestion logic
 """
+import logging
 from abc import ABC
 
 import polars as pl
 from sqlalchemy.orm import Session
+
+from src.common.models import Country
 
 
 class BaseCountryLoader(ABC):
@@ -14,7 +17,7 @@ class BaseCountryLoader(ABC):
     """
 
     def store(self, countries_df: pl.DataFrame):
-        pass
+        raise NotImplementedError
 
 
 class PgCountryLoader(BaseCountryLoader):
@@ -27,4 +30,8 @@ class PgCountryLoader(BaseCountryLoader):
         into relational database.
         :param countries_df: country dataframe
         """
-        pass
+
+        objs = [Country(**c) for c in countries_df.to_dicts()]
+        logging.warning(f"Storing {len(objs)} countries!")
+        self._db.bulk_save_objects(objects=objs)
+        logging.info("Country ingest successful")

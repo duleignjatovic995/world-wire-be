@@ -1,8 +1,8 @@
 """initial_model
 
-Revision ID: b46cc5be00ba
+Revision ID: 860dd3894215
 Revises: 
-Create Date: 2024-02-05 00:36:21.633836
+Create Date: 2024-02-05 01:37:57.656072
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 from sqlalchemy.dialects import postgresql
 
 # revision identifiers, used by Alembic.
-revision: str = "b46cc5be00ba"
+revision: str = "860dd3894215"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -29,7 +29,7 @@ def upgrade() -> None:
         sa.Column("region", sa.String(length=100), nullable=False),
         sa.Column("subregion", sa.String(length=100), nullable=False),
         sa.Column("maps", sa.String(length=100), nullable=False),
-        sa.Column("flag", sa.String(length=100), nullable=False),
+        sa.Column("flag", sa.String(length=150), nullable=False),
         sa.Column("is_landlocked", sa.Boolean(), nullable=True),
         sa.Column("area", sa.Numeric(), nullable=False),
         sa.Column("population", sa.Numeric(), nullable=False),

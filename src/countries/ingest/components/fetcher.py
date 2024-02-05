@@ -16,7 +16,7 @@ def parse_country(raw_country: dict) -> RawCountryDTO:
         "alpha3_code": raw_country["cca3"],
         "region": raw_country["region"],
         "subregion": raw_country.get("subregion", raw_country["region"]),
-        "map": raw_country["maps"]["googleMaps"],
+        "maps": raw_country["maps"]["googleMaps"],
         "flag": raw_country["flags"]["png"],
         "is_landlocked": raw_country["landlocked"],
         "area": raw_country["area"],  # km2

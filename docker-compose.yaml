@@ -28,6 +28,14 @@ services:
     depends_on:
       - redis
 
+  ww-worker:
+    build:
+      context: .
+    command: celery --app=src.celery_config:app worker --concurrency=10 --loglevel=INFO
+    env_file: .env.compose
+    depends_on:
+      - redis
+
   database:
     image: postgres:16
     restart: always
