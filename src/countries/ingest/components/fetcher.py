@@ -10,7 +10,7 @@ from src.settings import settings
 
 
 def parse_country(raw_country: dict) -> RawCountryDTO:
-    country_model = {
+    country_model: RawCountryDTO = {
         "name": raw_country["name"]["common"],
         "alpha2_code": raw_country["cca2"],
         "alpha3_code": raw_country["cca3"],

@@ -33,5 +33,5 @@ def login(
 
 
 @router.get("/users/me", response_model=UserDto)
-def get_current_user(user: UserDto = Depends(get_current_user)):
+def get_logged_user(user: UserDto = Depends(get_current_user)):
     return user
